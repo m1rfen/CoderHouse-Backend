@@ -1,0 +1,57 @@
+class Usuario {
+  constructor(nombre, apellido, libros, mascotas) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.libros = [libros];
+    this.mascotas = [mascotas];
+  }
+
+  getFullName() {
+    console.log(`Nombre y apellido: ${this.nombre} ${this.apellido}`);
+  }
+
+  addMascota(mascota) {
+    this.mascotas.push(mascota);
+  }
+
+  countMascotas() {
+    console.log(`${this.nombre} tiene ${this.mascotas.length} mascotas`);
+  }
+
+  addBook(nombre, autor) {
+    this.libros.push({ nombre: nombre, autor: autor });
+  }
+
+  getBookNames() {
+    const listaLibros = [];
+    this.libros.forEach((libro) => {
+      if (libro.nombre.length !== 0) {
+        listaLibros.push(libro.nombre);
+      }
+    });
+    console.log(listaLibros);
+  }
+}
+
+const usuario = new Usuario(
+  'Fermín',
+  'Martínez',
+  { nombre: 'La comunidad del anillo', autor: 'John Ronald Reuel Tolkien' },
+  'Mara'
+);
+
+usuario.getFullName();
+
+usuario.addMascota('Rocky');
+usuario.addMascota('Nala');
+
+usuario.countMascotas();
+
+usuario.addBook('Juego de tronos', 'George R. R. Martin');
+usuario.addBook('Las dos torres', 'John Ronald Reuel Tolkien');
+usuario.addBook('El retorno del Rey', 'John Ronald Reuel Tolkien');
+usuario.addBook('Interestelar', 'Kip Thorne');
+
+usuario.getBookNames();
+
+console.log(usuario);
